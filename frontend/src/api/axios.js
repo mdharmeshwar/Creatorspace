@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || 'https://creatorspace9.onrender.com/api';
+const rawURL = (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.trim()) || 'https://creatorspace9.onrender.com/api';
+const cleanURL = rawURL.replace(/\/+$/, '');
+const baseURL = cleanURL.endsWith('/api') ? cleanURL : `${cleanURL}/api`;
 
 export const api = axios.create({
   baseURL,
