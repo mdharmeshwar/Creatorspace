@@ -16,7 +16,7 @@ function buildApp() {
   app.use(compression());
   app.use(
     cors({
-      origin: (CLIENT_URL || '*').split(',').map((s) => s.trim()),
+      origin: true,
       credentials: true,
     }),
   );
