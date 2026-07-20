@@ -24,6 +24,8 @@ function buildApp() {
   app.use(express.urlencoded({ extended: true }));
   if (NODE_ENV !== 'test') app.use(morgan('dev'));
 
+  app.get('/', (_req, res) => res.json({ success: true, message: 'Creatorspace API is running' }));
+
   app.use('/api', healthRoutes);
   app.use('/api/posts', postRoutes);
 
